@@ -1,25 +1,23 @@
-const Driver = require('./driver');
-// const License = require('./License');
-const Vehicle = require('./vehicle');
 
-// Driver.hasOne(License, {
-//   foreignKey: 'driver_id',
-//   onDelete: 'CASCADE',
-// });
+const Traveler = require('./traveler');
+const Location = require('./location');
+const Trip = require('./trip');
 
-// License.belongsTo(Driver, {
-//   foreignKey: 'driver_id',
-// });
 
-// Define a Driver as having many Cars, thus creating a foreign key in the `car` table
-Driver.hasMany(Vehicle, {
-  foreignKey: 'driver_id',
-  onDelete: 'CASCADE',
+Traveler.belongsToMany(Location, {
+  through:{
+    model: Trip,
+    Unique: false
+  },
+  as: 'planned_trips'
 });
 
-// The association can also be created from the Car side
-Vehicle.belongsTo(Driver, {
-  foreignKey: 'driver_id',
+Location.belongsToMany(Traveler, {
+  through: {
+    model: Trip,
+    Unique: false
+  },
+  as:'location_travelers'
 });
 
-module.exports = { Driver, Vehicle };
+module.exports = { Traveler, Location, Trip };

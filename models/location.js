@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Driver extends Model {}
+class Location extends Model {}
 
-Driver.init(
+Location.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -13,9 +13,7 @@ Driver.init(
     },
     name: {
       type: DataTypes.STRING,
-    },
-    age: {
-      type: DataTypes.INTEGER,
+      allowNull: false,
     },
   },
   {
@@ -23,8 +21,8 @@ Driver.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'driver',
+    modelName: 'location',
   }
 );
 
-module.exports = Driver;
+module.exports = Location;

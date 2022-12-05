@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS driver_db;
+DROP DATABASE IF EXISTS vacation_db;
 
-CREATE DATABASE driver_db;
+CREATE DATABASE vacation_db;
